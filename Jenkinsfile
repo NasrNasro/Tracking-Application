@@ -22,10 +22,10 @@ pipeline {
         stage('Deploy'){
             steps{
                 echo 'Deploying to Kubernates'
-                sh "sed -i -r 's|richardchesterwood/k8s-fleetman-webapp-angular:release2|webapp:${commi_id}|' ./manifests/workloads.yaml"
-                sh 'kubectl get all'
-                sh 'kubectl apply -f ./manifests/ '
-                sh 'kubectl get all'
+                bat "sed -i -r 's|richardchesterwood/k8s-fleetman-webapp-angular:release2|webapp:${commi_id}|' ./manifests/workloads.yaml"
+                bat 'kubectl get all'
+                bat 'kubectl apply -f ./manifests/ '
+                bat 'kubectl get all'
                 echo 'deployment complete'
             }
         }
