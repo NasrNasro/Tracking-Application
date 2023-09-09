@@ -11,14 +11,14 @@ pipeline {
                 }
             }
         }
-        stage('Image Build'){
-            steps{
-                echo 'Building...'
-                sh 'scp -r -i $(minikube ssh-key) ./* docker@$(minikube ip):~/'
-                sh "minikube ssh 'docker build -t webapp :${commit_id} ./'"
-                echo 'build complete'
-            }
-        }
+        // stage('Image Build'){
+        //     steps{
+        //         echo 'Building...'
+        //         sh 'scp -r -i $(minikube ssh-key) ./* docker@$(minikube ip):~/'
+        //         sh "minikube ssh 'docker build -t webapp :${commit_id} ./'"
+        //         echo 'build complete'
+        //     }
+        // }
         stage('Deploy'){
             steps{
                 echo 'Deploying to Kubernates'
