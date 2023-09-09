@@ -5,7 +5,7 @@ pipeline {
         stage('Preparation'){
             steps{
                 checkout scm
-                sh "git rev-parse --short HEAD > .git/commit_id"
+                bat "git rev-parse --short HEAD > .git/commit_id"
                 script{
                     commit_id = readFile('.git/commit_id').trim()
                 }
